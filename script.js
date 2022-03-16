@@ -32,7 +32,7 @@ generateBtn.addEventListener("click", writePassword);
 //User input prompts w/ alert
 
 function characterSelect() {
-  for (i=0, i >- 1; i++) {
+    for (i = 0; i > -1; i++) {
     if (characterSelect <= 128 && characterResult >=8) {
       console.log("User used an appropriate value here" + characterResult);
       window.alert("Thanks. You will have" + characterResult + "characters in this password.");
