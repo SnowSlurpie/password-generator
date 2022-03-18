@@ -1,7 +1,7 @@
 //Data Pools that'll be necessary to generate the Very Strong Password for the assignment!
 
 var choicePool = [];
-var passPool = [];
+const passPool = [];
 var stringPool = "nemesis"
 
 //Data that are needed for the pools
@@ -37,7 +37,7 @@ generateBtn.addEventListener("click", writePassword);
 
 function sizeSelect() {
     for (i = 0; i > -1; i++) {
-    if (sizeResult <= 128 && sizeResult >=8) {
+    if (sizeResult <= 128 && sizeResult >= 8) {
       console.log("End user chose an appropriate value" + sizeResult);
       window.alert("Thanks. You will have " + sizeResult + " characters in this password.");
       return;
@@ -101,7 +101,7 @@ function numSelect() {
       return;
     } else if (numResult === "no" || numResult === "No") {
       console.log("End User didnt choose to add numbers");
-      window.alert("Thank you. Your password will not contain numbers");
+      window.alert("Alright. If you want your password to be easier to guess..I suppose thats ok. No numbers for you.");
       return;
     } else if (i == 0) {
       numResult = window.prompt("Do you want to use numbers in your password? type yes or no")
@@ -123,7 +123,7 @@ function specialSelect() {
         return;
     } else if (specialResult === "no" || specialResult === "No") {
         console.log ("End user chose to not add special characters");
-        window.alert ("Thank you. Your password will not contain special characters");
+        window.alert ("You must really hate security, huh? Your password now won't contain special characters");
         return;
     } else if (i == 0) {
         specialResult = window.prompt ("Do you want to use special characters? type yes or no")
@@ -138,8 +138,8 @@ function passGenerator() {
   i = 0
   while (i < sizeResult) {
     if (uCaseResult === "yes" || uCaseResult === "Yes") {
-      addUcase = Ucase[Math.floor(Math.random() * Ucase.length)];
-      stringPool.push(addUcase);
+      addUcase = uCase[Math.floor(Math.random() * uCase.length)];
+      passPool.push(addUcase);
       console.log(addUcase + "This is the value selected for uppercase");
       i = i + 1;
     }
@@ -148,16 +148,16 @@ function passGenerator() {
     }
     if (lCaseResult === "yes" || lCaseResult === "Yes") {
       addlCase = lCase[Math.floor(Math.random() * lCase.length)];
-      stringPool.push(addlCase);
+      passPool.push(addlCase);
       console.log(addlCase + "This is the value selected for lowercase");
-      i = i + i;
+      i = i + 1;
     }
     if (i >= sizeResult) {
       break;
   }
-  if (numResult === "yes" || numeResult === "Yes") {
+  if (numResult === "yes" || numResult === "Yes") {
       addNum = num[Math.floor(Math.random() * num.length)];
-      stringPool.push(addNum);
+      passPool.push(addNum);
       console.log(addNum + " This is the value for numbers in the password");
       i = i + 1;
   }
@@ -166,7 +166,7 @@ function passGenerator() {
   }
   if (specialResult === "yes" || specialResult === "Yes") {
       addSpecial = special[Math.floor(Math.random() * special.length)];
-      stringPool.push(addSpecial);
+      passPool.push(addSpecial);
       console.log(addSpecial + " Random special value is chosen for the password");
       i = i + 1;
     }
@@ -176,7 +176,7 @@ function passGenerator() {
 
 
 function makePasswordString() {
-  stringPool = stringPool.toString();
+  stringPool = passPool.toString();
   stringPool = stringPool.replaceAll(',', '');
 }
 
