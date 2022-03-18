@@ -96,7 +96,7 @@ function numSelect() {
   for (i = 0; i > -1; i++) {
     if (numResult === "yes" || numResult === "Yes") {
       console.log("End User wants numbers");
-      window.alert("Thank you. Your password will contain numbers");
+      window.alert("Perfect. I'll add some numbers in to this for you.");
       stringPool = stringPool.concat(num)
       return;
     } else if (numResult === "no" || numResult === "No") {
@@ -118,7 +118,7 @@ function specialSelect() {
   for (i = 0; i > -1; i++) {
     if (specialResult === "yes" || specialResult === "Yes") {
         console.log("End user chose to include special characters");
-        window.alert ("Thank you. Your password will contain special characters");
+        window.alert ("Thank you. Your password will contain special characters now.");
         stringPool = stringPool.concat(special);
         return;
     } else if (specialResult === "no" || specialResult === "No") {
