@@ -39,7 +39,7 @@ function sizeSelect() {
     for (i = 0; i > -1; i++) {
     if (sizeResult <= 128 && sizeResult >= 8) {
       console.log("End user chose an appropriate value" + sizeResult);
-      window.alert("Thanks. You will have " + sizeResult + " characters in this password.");
+      window.alert("Thanks for giving me something to work with. I'll make sure that you have " + sizeResult + " characters in this password.");
       return;
     } else if (i == 0) {
       sizeResult = window.prompt("How long would you like your password to be? Please choose between 8 and 128 characters.");
@@ -54,7 +54,7 @@ function uCaseSelect() {
     for (i = 0; i > -1; i++) {
       if (uCaseResult === "yes" || uCaseResult === "Yes") {
             console.log("End user chose uppercase characters");
-            window.alert("Alright. Uppercase will be included!");
+            window.alert("Righteous. Uppercase will be included!");
             stringPool = stringPool.concat(uCase);
           return;
       } else if (uCaseResult === "no" || uCaseResult === "No") {
@@ -126,7 +126,7 @@ function specialSelect() {
         window.alert ("You must really hate security, huh? Your password now won't contain special characters");
         return;
     } else if (i == 0) {
-        specialResult = window.prompt ("Do you want to use special characters? type yes or no")
+        specialResult = window.prompt ("Do you want to use special characters in your password? Type yes or no")
     } else {
         specialResult = window.prompt ("Looks like you used an invalid answer. Lets try again..please type yes or no.");
         console.log ("End User typed an invalid entry and will be prompted again");
