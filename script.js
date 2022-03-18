@@ -13,7 +13,7 @@ var special = ['#','*','+','/','@','?','!','~'];
 
 //User input variables from dialogue boxes. These should change depending on what the user dictates.
 
-var characterResult = 0;
+var sizeResult = 0;
 var uCaseResult = 0;
 var lCaseResult = 0;
 
@@ -34,14 +34,14 @@ generateBtn.addEventListener("click", writePassword);
 
 function sizeSelect() {
     for (i = 0; i > -1; i++) {
-    if (characterResult <= 128 && characterResult >=8) {
-      console.log("End user chose an appropriate value" + characterResult);
-      window.alert("Thanks. You will have " + characterResult + " characters in this password.");
+    if (sizeResult <= 128 && sizeResult >=8) {
+      console.log("End user chose an appropriate value" + sizeResult);
+      window.alert("Thanks. You will have " + sizeResult + " characters in this password.");
       return;
     } else if (i == 0) {
-      characterResult = window.prompt("How long would you like your password to be? Please choose between 8 and 128 characters.");
+      sizeResult = window.prompt("How long would you like your password to be? Please choose between 8 and 128 characters.");
     } else {
-      characterResult = window.prompt("That's an invalid answer. Please try something more appropriate.");
+      sizeResult = window.prompt("That's an invalid answer. Please try something more appropriate.");
       console.log("End User entered an invalid value and is prompted to try again");
     }
   }
@@ -66,7 +66,7 @@ function uCaseSelect() {
      }
   }
 }
-
+// Prompts for lowercase
 function lCaseSelect() {
   for (i = 0; i > -1; i++) {
     if (lCaseResult === "yes" || lCaseResult === "Yes") {
@@ -86,6 +86,29 @@ function lCaseSelect() {
     }
   }
 }
+function passGenerator() {
+  i = 0
+  while (i < sizeResult) {
+    if (uCaseResult === "yes" || uCaseResult === "Yes") {
+      addUcase = Ucase[Math.floor(Math.random() * Ucase.length)];
+      stringPool.push(addUcase);
+      console.log(addUcase + "This is the value selected for uppercase");
+      i = i + 1;
+    }
+    if (i >= sizeResult) {
+      break;
+    }
+    if (lCaseResult === "yes" || lCaseResult === "Yes") {
+      addlCase = lCase[Math.floor(Math.random() * lCase.length)];
+      stringPool.push(addlCase);
+      console.log(addlCase + "This is the value selected for lowercase");
+      i = i + i;
+    }
+    if (i >= sizeResult) {
+      break;
+    }
+  }
+}
 
 //Function to congregate choices and prepare password & remove commas
 
@@ -99,7 +122,7 @@ function generatePassword() {
   sizeSelect();
   uCaseSelect();
   lCaseSelect();
-  passwordCreator();
+  passGenerator();
   makePasswordString();
   return(stringPool);
 }
