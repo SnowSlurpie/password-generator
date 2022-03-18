@@ -75,14 +75,14 @@ function lCaseSelect() {
     if (lCaseResult === "yes" || lCaseResult === "Yes") {
       console.log ("End user chose to include lowercase");
       window.alert("Okie Dokie Smokie, I'll put some lowercase in to jazz it up.");
-      stringpool = stringpool.concat(lCase);
+      stringPool = stringPool.concat(lCase);
       return;
-    } else if (lCaseSelect === "no" || lCaseResult === "No") {
+    } else if (lCaseResult === "no" || lCaseResult === "No") {
         console.log("End User chose to not include lowercase letters.");
         window.alert("Roger that, Boss. No lower case will be in here.");
         return;
     } else if (i == 0) {
-        lCaseSelect = window.prompt ("Do you need lowercase letters in this password?");
+        lCaseResult = window.prompt ("Do you need lowercase letters in this password?");
     } else {
         lCaseResult = window.prompt ("Looks like you used an invalid answer. Lets try again..please type yes or no.");
         console.log ("End User typed an invalid entry and will be prompted again");
@@ -94,19 +94,19 @@ function lCaseSelect() {
 
 function numSelect() {
   for (i = 0; i > -1; i++) {
-    if (numResult === "yes" || numeResult === "Yes") {
+    if (numResult === "yes" || numResult === "Yes") {
       console.log("End User wants numbers");
       window.alert("Thank you. Your password will contain numbers");
-      stringPool = stringPool.concat(numericV)
+      stringPool = stringPool.concat(num)
       return;
-    } else if (numeResult === "no" || numeResult === "No") {
+    } else if (numResult === "no" || numResult === "No") {
       console.log("End User didnt choose to add numbers");
       window.alert("Thank you. Your password will not contain numbers");
       return;
     } else if (i == 0) {
-      numeResult = window.prompt("Do you want to use numbers in your password? type yes or no")
+      numResult = window.prompt("Do you want to use numbers in your password? type yes or no")
     } else {
-      numeResult = window.prompt ("Looks like you used an invalid answer. Lets try again..please type yes or no.");
+      numResult = window.prompt ("Looks like you used an invalid answer. Lets try again..please type yes or no.");
       console.log ("End User typed an invalid entry and will be prompted again");
     }
   }
@@ -114,19 +114,36 @@ function numSelect() {
 
 //prompts for special characters
 
-function special
-
+function specialSelect() {
+  for (i = 0; i > -1; i++) {
+    if (specialResult === "yes" || specialResult === "Yes") {
+        console.log("End user chose to include special characters");
+        window.alert ("Thank you. Your password will contain special characters");
+        stringPool = stringPool.concat(special);
+        return;
+    } else if (specialResult === "no" || specialResult === "No") {
+        console.log ("End user chose to not add special characters");
+        window.alert ("Thank you. Your password will not contain special characters");
+        return;
+    } else if (i == 0) {
+        specialResult = window.prompt ("Do you want to use special characters? type yes or no")
+    } else {
+        specialResult = window.prompt ("Looks like you used an invalid answer. Lets try again..please type yes or no.");
+        console.log ("End User typed an invalid entry and will be prompted again");
+    }
+  }
+}
 
 function passGenerator() {
   i = 0
-  while (i < sizeSelect) {
+  while (i < sizeResult) {
     if (uCaseResult === "yes" || uCaseResult === "Yes") {
       addUcase = Ucase[Math.floor(Math.random() * Ucase.length)];
       stringPool.push(addUcase);
       console.log(addUcase + "This is the value selected for uppercase");
       i = i + 1;
     }
-    if (i >= sizeSelect) {
+    if (i >= sizeResult) {
       break;
     }
     if (lCaseResult === "yes" || lCaseResult === "Yes") {
@@ -135,7 +152,7 @@ function passGenerator() {
       console.log(addlCase + "This is the value selected for lowercase");
       i = i + i;
     }
-    if (i >= sizeSelect) {
+    if (i >= sizeResult) {
       break;
   }
   if (numResult === "yes" || numeResult === "Yes") {
@@ -144,13 +161,13 @@ function passGenerator() {
       console.log(addNum + " This is the value for numbers in the password");
       i = i + 1;
   }
-  if (i >= sizeSelect) {
+  if (i >= sizeResult) {
       break;
   }
   if (specialResult === "yes" || specialResult === "Yes") {
       addSpecial = special[Math.floor(Math.random() * special.length)];
       stringPool.push(addSpecial);
-      console.log(addSpecial + " Random special value is chosen");
+      console.log(addSpecial + " Random special value is chosen for the password");
       i = i + 1;
     }
   }
@@ -167,6 +184,8 @@ function generatePassword() {
   sizeSelect();
   uCaseSelect();
   lCaseSelect();
+  numSelect();
+  specialSelect();
   passGenerator();
   makePasswordString();
   return(stringPool);
