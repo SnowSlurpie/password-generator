@@ -16,6 +16,9 @@ var special = ['#','*','+','/','@','?','!','~'];
 var sizeResult = 0;
 var uCaseResult = 0;
 var lCaseResult = 0;
+var numResult = 0;
+var specialResult = 0;
+
 
 var generateBtn = document.querySelector("#generate");
 var passwordText = document.querySelector("#password");
@@ -76,7 +79,7 @@ function lCaseSelect() {
       return;
     } else if (lCaseSelect === "no" || lCaseResult === "No") {
         console.log("End User chose to not include lowercase letters.");
-        window.alert("Roger that, Boss. No lower case will be in here.")
+        window.alert("Roger that, Boss. No lower case will be in here.");
         return;
     } else if (i == 0) {
         lCaseSelect = window.prompt ("Do you need lowercase letters in this password?");
@@ -86,16 +89,44 @@ function lCaseSelect() {
     }
   }
 }
+
+//prompts for numbers
+
+function numSelect() {
+  for (i = 0; i > -1; i++) {
+    if (numResult === "yes" || numeResult === "Yes") {
+      console.log("End User wants numbers");
+      window.alert("Thank you. Your password will contain numbers");
+      stringPool = stringPool.concat(numericV)
+      return;
+    } else if (numeResult === "no" || numeResult === "No") {
+      console.log("End User didnt choose to add numbers");
+      window.alert("Thank you. Your password will not contain numbers");
+      return;
+    } else if (i == 0) {
+      numeResult = window.prompt("Do you want to use numbers in your password? type yes or no")
+    } else {
+      numeResult = window.prompt ("Looks like you used an invalid answer. Lets try again..please type yes or no.");
+      console.log ("End User typed an invalid entry and will be prompted again");
+    }
+  }
+}
+
+//prompts for special characters
+
+function special
+
+
 function passGenerator() {
   i = 0
-  while (i < sizeResult) {
+  while (i < sizeSelect) {
     if (uCaseResult === "yes" || uCaseResult === "Yes") {
       addUcase = Ucase[Math.floor(Math.random() * Ucase.length)];
       stringPool.push(addUcase);
       console.log(addUcase + "This is the value selected for uppercase");
       i = i + 1;
     }
-    if (i >= sizeResult) {
+    if (i >= sizeSelect) {
       break;
     }
     if (lCaseResult === "yes" || lCaseResult === "Yes") {
@@ -104,12 +135,26 @@ function passGenerator() {
       console.log(addlCase + "This is the value selected for lowercase");
       i = i + i;
     }
-    if (i >= sizeResult) {
+    if (i >= sizeSelect) {
       break;
+  }
+  if (numResult === "yes" || numeResult === "Yes") {
+      addNum = num[Math.floor(Math.random() * num.length)];
+      stringPool.push(addNum);
+      console.log(addNum + " This is the value for numbers in the password");
+      i = i + 1;
+  }
+  if (i >= sizeSelect) {
+      break;
+  }
+  if (specialResult === "yes" || specialResult === "Yes") {
+      addSpecial = special[Math.floor(Math.random() * special.length)];
+      stringPool.push(addSpecial);
+      console.log(addSpecial + " Random special value is chosen");
+      i = i + 1;
     }
   }
 }
-
 //Function to congregate choices and prepare password & remove commas
 
 
